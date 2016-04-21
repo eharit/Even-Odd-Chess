@@ -58,57 +58,72 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          function init () {
          
-         	var board = {
-         		field_1:{count:1, column:1, row:1, isObject:true, name:'start'},
-         		field_2:{count:2, column:2, row:1, isObject:false, name:'bokor'},
-         		field_3:{count:3, column:3, row:1, isObject:false, name:'macska'},
-         		field_4:{count:4, column:4, row:1, isObject:false, name:'hal'},
-         		field_5:{count:5, column:5, row:1, isObject:true, name:'babakocsi'},
+         	var board = {};
          
-         		field_6:{count:6,column:1, row:2, isObject:false, name:'csiga'},
-         		field_7:{count:7,column:2, row:2, isObject:true, name:'kocka'},
-         		field_8:{count:8,column:3, row:2, isObject:true, name:'labda'},
-         		field_9:{count:9,column:4, row:2, isObject:false, name:'kutya'},
-         		field_10:{count:10,column:5, row:2, isObject:false, name:'kacsa'},
+         	// define list of 25 (random?) numbers 
          
-         		field_11:{count:11,column:1, row:3, isObject:true, name:'kocsi'},
-         		field_12:{count:12,column:2, row:3, isObject:false, name:'fa'},
-         		field_13:{count:13,column:3, row:3, isObject:true, name:'lámpa'},
-         		field_14:{count:14,column:4, row:3, isObject:true, name:'bögre'},
-         		field_15:{count:15, column:5, row:3, isObject:false, name:'katica'},
+         	var n = 25;
+         	var numbers = [];
+         	var ready = false;
+         	var shuffles = 0;
          
-         		field_16:{count:16,column:1, row:4, isObject:true, name:'esernyő'},
-         		field_17:{count:17,column:2, row:4, isObject:false, name:'virág'},
-         		field_18:{count:18,column:3, row:4, isObject:true, name:'gumikacsa'},
-         		field_19:{count:19,column:4, row:4, isObject:false, name:'sün'},
-         		field_20:{count:20,column:5, row:4, isObject:false, name:'béka'},
-         
-         		field_21:{count:21,column:1, row:5, isObject:false, name:'mókus'},
-         		field_22:{count:22,column:2, row:5, isObject:true, name:'locsolókanna'},
-         		field_23:{count:23,column:3, row:5, isObject:false, name:'csecsemő'},
-         		field_24:{count:24,column:4, row:5, isObject:false, name:'fenyő'},
-         		field_25:{count:25,column:5, row:5, isObject:true, name:'cél'}
+         	for (var i = 1; i < n-1; i++) {
+         		numbers.push(i+1);
          	}
+         
+         	// shuffle array and check if the puzzle can be solved
+         
+         	while (!ready) {
+         		shuffle(numbers);
+         		shuffles++;
+         		console.log("Shuffle №"+shuffles);
+         		if ( ((numbers[6]%2) || (numbers[10]%2)) && ((numbers[12]%2) || (numbers[16]%2)) ) {
+         			ready = true;
+         		} 
+         	}
+         
+         	console.log(numbers);
+         	numbers.push(n);
+         	numbers.unshift(1);
+         	console.log(numbers);
+         
+         	// build the board_n object up from numbers 1 to 25
+         	for (var i = 0; i < n; i++) {
+         		var v = numbers[i];
+         		board["field_"+(i+1)] = {
+         			count: i+1,
+         			column: (i + 5) % 5 + 1,
+         			row: Math.floor(i / 5) + 1,
+         			number: v,
+         			isOdd: v%2
+         		};
+         	}
+         
+         
+         	// add row, and column numbers, 
+         	// check if can be devided by 2, 
+         	// add the result to the isEven property
          
          	console.log(board);
          
          	var possibleClicks = [1];
          
-         	$.each(board,function(name,value){
+         	$.each(board,function(key,object){
+         		var symbol = sym.getSymbol('board').getSymbol(key); //
+         		var jQElement = sym.getSymbol('board').$(key);
          
-         		var symbol = sym.getSymbol('board').getSymbol(name);
-         		var jQSymbol = sym.getSymbol('board').$(name);
-         		var object = value;
+         		symbol.$('number').html(object.number);
+         		if (object.count%2) {
+         			symbol.$('base').css('background','rgba(0,0,0,.25)');
+         		}
          
-         		symbol.$('number').html(value.count);
-         
-         		jQSymbol.css('cursor','pointer').click(function(e){
+         		jQElement.css('cursor','pointer').click(function(e){
          
          			totalHits++;
          
-         			if (arrayContains(object.count,possibleClicks) && object.isObject) {
+         			if (arrayContains(object.count,possibleClicks) && object.isOdd) {
          				$('.fields').css('background','transparent');
-         				jQSymbol.css('background','rgba(50,255,0,.2)');
+         				jQElement.css('background','rgba(50,255,0,.5)');
          				TweenMax.to(symbol.$('tick'),.5,{scale:1,autoAlpha:1,ease:Elastic.easeOut});
          				possibleClicks = possibleNextFields(object);
          				console.log(possibleClicks);
@@ -117,12 +132,22 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          				console.log("+++"+object.count+"+++");
          
          				if (object.count == 25) {
-         					sym.finalScore = 5;
-         					sym.$('Score').html("Hurrá, célba jutottál! ("+hits+" / "+totalHits+")");
+         
+         					if (totalHits < 6) {
+         						sym.finalScore = 5;
+         						sym.$('Score').html("Gratulálok, ügyes vagy! ("+hits+" / "+totalHits+")");
+         					} else if (totalHits <= 10) {
+         						sym.finalScore = 4;
+         						sym.$('Score').html("Hurrá, célba jutottál! ("+hits+" / "+totalHits+")");
+         					} else if (totalHits > 10) {
+         						sym.finalScore = 3;
+         						sym.$('Score').html("Huh, végre célba jutottál! ("+hits+" / "+totalHits+")");
+         					}
+         
          					sym.$('board').children().css('cursor','default').off();
          				}
          
-         			} else if (arrayContains(object.count,possibleClicks) && !object.isObject) {
+         			} else if (arrayContains(object.count,possibleClicks) && !object.isOdd) {
          				updateScore (hits,totalHits);
          			 	TweenMax.to(symbol.$('cross'),.5,{scale:1,autoAlpha:1,ease:Elastic.easeOut});
          			 	$(this).css('cursor','default').off();
@@ -137,13 +162,12 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          	}
          
          	function updateScore (hits,totalHits) {
-         		sym.$('Score').html(hits+" / "+totalHits);
+         		sym.$('Score').html("Eddig "+hits+" helyes lépés "+totalHits+" kattintásból");
          	}
          
          	function possibleNextFields(object) {
          		var list = [];
          		var d = [];
-         		var object = object;
          		var count = object.count;
          		var row = object.row;
          		var column = object.column;
@@ -193,6 +217,24 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          		return list;
          	}
+         }
+         
+         function shuffle(array) {
+           var currentIndex = array.length, temporaryValue, randomIndex;
+         
+           // While there remain elements to shuffle...
+           while (0 !== currentIndex) {
+         		 // Pick a remaining element...
+         		 randomIndex = Math.floor(Math.random() * currentIndex);
+         		 currentIndex -= 1;
+         
+         		 // And swap it with the current element.
+         		 temporaryValue = array[currentIndex];
+         		 array[currentIndex] = array[randomIndex];
+         		 array[randomIndex] = temporaryValue;
+             }
+         
+           return array;
          }
 
       });
@@ -329,11 +371,11 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          	var finalScore = sym.getParentSymbol().finalScore;
          
          	if (finalScore == 5) {
-         		showModal('Tökéletes!','happy');
+         		showModal('Brávó, a lehető legkevesebb lépésből megoldottad a feladatot!','happy');
          	} else if (finalScore == 4) {
-         		showModal('Ügyes vagy, megoldásod nem tökéletes, figyelj jobban!','neutral');
+         		showModal('Ügyes vagy, de gondoltad volna, hogy 5 lépésből is meg lehet oldani a feladatot? Próbáld újra!','happy');
          	} else if (finalScore == 3) {
-         		showModal('Szedd össze magad, lesz ez jobb is!','neutral');
+         		showModal('Kerülővel, de megvan, gondoltad volna, hogy 5 lépésből is meg lehet oldani? Megpróbálod újra?','neutral');
          	} else if (finalScore == 2) {
          		showModal('Alig van jó megoldásod, gyakorolj többet!','neutral');
          	} else if (finalScore == 1) {

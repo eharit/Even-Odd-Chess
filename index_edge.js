@@ -43,25 +43,16 @@
                             type: 'text',
                             tag: 'h1',
                             rect: ['1px', '9px', '1000px', '30px', 'auto', 'auto'],
-                            text: "Kattintással haladj végig a tábla egyik oldaláról a másikra lóugrásban!",
+                            text: "<p style=\"margin:0px\">Csak a páratlan számokra kattintva juss el 1-től 25-ig lóugrásban!​</p>",
                             align: "center",
                             font: ['Tahoma, Geneva, sans-serif', [24, "px"], "rgba(0,0,0,1)", "700", "none", "", "break-word", ""]
-                        },
-                        {
-                            id: 'TextCopy',
-                            type: 'text',
-                            tag: 'p',
-                            rect: ['1px', '39px', '1000px', '21px', 'auto', 'auto'],
-                            text: "<p style=\"margin:0px\">Csak olyan mezőre léphetsz, ahol egy élettelen dolog rajzát látod! Kezdd a \"start\"-tal, és juss el a \"cél\"-ig!​</p>",
-                            align: "center",
-                            font: ['Tahoma, Geneva, sans-serif', [14, "px"], "rgba(0,0,0,1)", "400", "none", "", "break-word", ""]
                         },
                         {
                             id: 'Score',
                             type: 'text',
                             tag: 'pre',
-                            rect: ['260px', '629px', '480px', '21px', 'auto', 'auto'],
-                            text: "<p style=\"margin:0px\">Kattints a Start mezőre!​</p>",
+                            rect: ['252px', '39px', '480px', '21px', 'auto', 'auto'],
+                            text: "<p style=\"margin:0px\">Kattints az 1-es mezőre!​</p>",
                             align: "center",
                             font: ['Tahoma, Geneva, sans-serif', [14, "px"], "rgba(0,0,0,1)", "400", "none", "normal", "break-word", ""]
                         },
@@ -69,7 +60,7 @@
                             id: 'board',
                             symbolName: 'board',
                             type: 'rect',
-                            rect: ['261', '63px', '480', '480', 'auto', 'auto']
+                            rect: ['261', '60px', '480', '480', 'auto', 'auto']
                         },
                         {
                             id: 'comp_evaluator2',
@@ -116,18 +107,19 @@
                     dom: [
                         {
                             rect: ['0px', '0px', '96px', '96px', 'auto', 'auto'],
-                            id: 'base',
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
+                            id: 'base',
+                            opacity: '0.74920604674797',
                             type: 'rect',
-                            fill: ['rgba(0,0,0,0.00)']
+                            fill: ['rgba(0,0,0,1.00)']
                         },
                         {
-                            font: ['Tahoma, Geneva, sans-serif', [12, 'px'], 'rgba(129,129,129,0.04)', '400', 'none solid rgb(0, 0, 0)', 'normal', 'break-word', 'normal'],
-                            type: 'text',
+                            rect: ['0px', '33px', '96px', '30px', 'auto', 'auto'],
+                            font: ['Tahoma, Geneva, sans-serif', [24, 'px'], 'rgba(255,255,255,1.00)', '400', 'none solid rgb(0, 0, 0)', 'normal', 'break-word', 'normal'],
                             id: 'number',
                             text: '#',
                             align: 'center',
-                            rect: ['0px', '0px', '21px', '21px', 'auto', 'auto']
+                            type: 'text'
                         },
                         {
                             rect: ['61px', '61px', '35px', '35px', 'auto', 'auto'],
@@ -148,7 +140,8 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '96px', '96px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '96px', '96px']
                         }
                     }
                 },
@@ -170,17 +163,11 @@
                 content: {
                     dom: [
                         {
-                            rect: ['0px', '0px', '480px', '480px', 'auto', 'auto'],
-                            id: 'spritesheet',
-                            userClass: '',
-                            type: 'image',
-                            fill: ['rgba(0,0,0,0)', 'images/spritesheet.png', '0px', '0px', '1000px', '1000px', 'no-repeat']
-                        },
-                        {
                             type: 'rect',
+                            userClass: 'fields',
                             id: 'field_1',
                             symbolName: 'click',
-                            userClass: 'fields',
+                            opacity: '1',
                             rect: ['0px', '0px', '96', '96', 'auto', 'auto']
                         },
                         {
@@ -354,7 +341,8 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '480px', '480px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '480px', '480px']
                         }
                     }
                 },
@@ -376,27 +364,28 @@
                 content: {
                     dom: [
                         {
-                            rect: ['0px', '0px', '84', '39', 'auto', 'auto'],
                             id: 'btn_check',
                             symbolName: 'btn_check',
+                            rect: ['0px', '0px', '84', '39', 'auto', 'auto'],
                             type: 'rect'
                         },
                         {
-                            rect: ['188px', '0px', null, null, 'auto', 'auto'],
                             id: 'btn_answer',
                             symbolName: 'btn_answer',
+                            rect: ['188px', '0px', null, null, 'auto', 'auto'],
                             type: 'rect'
                         },
                         {
-                            rect: ['94px', '0px', null, null, 'auto', 'auto'],
                             id: 'btn_restart',
                             symbolName: 'btn_restart',
+                            rect: ['94px', '0px', null, null, 'auto', 'auto'],
                             type: 'rect'
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '272px', '39px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '272px', '39px']
                         }
                     }
                 },
@@ -487,13 +476,13 @@
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '-200px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
+                            rect: ['29px', '56px', '392px', '94px', 'auto', 'auto'],
                             font: ['Tahoma, Geneva, sans-serif', [24, 'px'], 'rgba(170,170,170,1.00)', '400', 'none', 'normal', 'break-word', 'normal'],
-                            type: 'text',
                             align: 'center',
                             id: 'text',
-                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur elit. In quis nulla ac mi ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
                             textStyle: ['', '', '30px', '', 'none'],
-                            rect: ['29px', '56px', '392px', '94px', 'auto', 'auto']
+                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur elit. In quis nulla ac mi ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
+                            type: 'text'
                         },
                         {
                             type: 'rect',
@@ -838,13 +827,13 @@
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet2.png', '-200px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
+                            type: 'text',
                             rect: ['29px', '56px', '392px', '80px', 'auto', 'auto'],
-                            font: ['Tahoma, Geneva, sans-serif', [18, 'px'], 'rgba(170,170,170,1.00)', '400', 'none', 'normal', 'break-word', 'normal'],
-                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis nulla ac mi vehicula ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
-                            id: 'text',
                             textStyle: ['', '', '26px', '', 'none'],
+                            id: 'text',
+                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis nulla ac mi vehicula ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
                             align: 'center',
-                            type: 'text'
+                            font: ['Tahoma, Geneva, sans-serif', [18, 'px'], 'rgba(170,170,170,1.00)', '400', 'none', 'normal', 'break-word', 'normal']
                         },
                         {
                             rect: ['0px', '39px', '450px', '1px', 'auto', 'auto'],
@@ -913,30 +902,31 @@
                 content: {
                     dom: [
                         {
-                            rect: ['364px', '552px', '272', '39', 'auto', 'auto'],
                             id: 'buttons',
                             symbolName: 'buttons',
+                            rect: ['364px', '552px', '272', '39', 'auto', 'auto'],
                             type: 'rect'
                         },
                         {
-                            type: 'rect',
                             rect: ['0px', '0px', '1000px', '600px', 'auto', 'auto'],
+                            type: 'rect',
                             id: 'blind',
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
                             display: 'none',
                             fill: ['rgba(255,255,255,0.75)']
                         },
                         {
-                            rect: ['270px', '148px', '450', '300', 'auto', 'auto'],
+                            type: 'rect',
                             display: 'none',
                             symbolName: 'modal',
-                            id: 'modal',
-                            type: 'rect'
+                            rect: ['270px', '148px', '450', '300', 'auto', 'auto'],
+                            id: 'modal'
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '0px', '0px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '0px', '0px']
                         }
                     }
                 },
