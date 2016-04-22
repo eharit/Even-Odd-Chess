@@ -77,15 +77,15 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          		shuffle(numbers);
          		shuffles++;
          		console.log("Shuffle №"+shuffles);
-         		if ( ((numbers[6]%2) || (numbers[10]%2)) && ((numbers[12]%2) || (numbers[16]%2)) ) {
+         		if ( ((numbers[6]%2) && (numbers[10]%2)) && ((numbers[12]%2) && (numbers[16]%2)) ) {
          			ready = true;
          		} 
          	}
          
-         	console.log(numbers);
+         	//console.log(numbers);
          	numbers.push(n);
          	numbers.unshift(1);
-         	console.log(numbers);
+         	//console.log(numbers);
          
          	// build the board_n object up from numbers 1 to 25
          	for (var i = 0; i < n; i++) {
@@ -104,7 +104,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          	// check if can be devided by 2, 
          	// add the result to the isEven property
          
-         	console.log(board);
+         	//console.log(board);
          
          	var possibleClicks = [1];
          
@@ -126,10 +126,10 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          				jQElement.css('background','rgba(50,255,0,.5)');
          				TweenMax.to(symbol.$('tick'),.5,{scale:1,autoAlpha:1,ease:Elastic.easeOut});
          				possibleClicks = possibleNextFields(object);
-         				console.log(possibleClicks);
+         				//console.log(possibleClicks);
          				hits++;
          				updateScore (hits,totalHits);
-         				console.log("+++"+object.count+"+++");
+         				//console.log("+++"+object.count+"+++");
          
          				if (object.count == 25) {
          
@@ -149,8 +149,17 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
          
          			} else if (arrayContains(object.count,possibleClicks) && !object.isOdd) {
          				updateScore (hits,totalHits);
+         				TweenMax.fromTo(jQElement, .5, {background: 'rgba(200,255,0,.5)'}, {background: 'rgba(200,255,0,0)', onComplete: function () {
+         					jQElement.css('background','transparent');
+         				}});
          			 	TweenMax.to(symbol.$('cross'),.5,{scale:1,autoAlpha:1,ease:Elastic.easeOut});
          			 	$(this).css('cursor','default').off();
+         			} else {
+         				updateScore (hits,totalHits);
+         				TweenMax.fromTo(jQElement, .5, {background: 'rgba(255,20,0,.5)'}, {background: 'rgba(255,20,0,0)', onComplete: function () {
+         					jQElement.css('background','transparent');
+         				}});
+         				jQElement.css('background','rgba(50,255,0,.5)');
          			}
          
          		})

@@ -8,7 +8,9 @@
         vid='media/',
         js='js/',
         fonts = {
-        },
+            'comfortaa, sans-serif': '<script src=\"http://use.edgefonts.net/comfortaa:n4,n3,n7:all.js\"></script>',
+            'varela-round, sans-serif': '<script src=\"http://use.edgefonts.net/varela-round:n4:all.js\"></script>',
+            'raleway, sans-serif': '<script src=\"http://use.edgefonts.net/raleway:n1,n7,n4,n5,n3,n8,n9,n2,n6:all.js\"></script>'        },
         opts = {
             'gAudioPreloadPreference': 'auto',
             'gVideoPreloadPreference': 'auto'
@@ -42,19 +44,20 @@
                             id: 'Text',
                             type: 'text',
                             tag: 'h1',
-                            rect: ['1px', '9px', '1000px', '30px', 'auto', 'auto'],
-                            text: "<p style=\"margin:0px\">Csak a páratlan számokra kattintva juss el 1-től 25-ig lóugrásban!​</p>",
+                            rect: ['1px', '5px', '1000px', '30px', 'auto', 'auto'],
+                            text: "<p style=\"margin:0px\">Csak a páratlan számokra kattintva juss el lóugrásban<span style=\"font-family: Tahoma, Geneva, sans-serif; font-weight: bold; font-style: normal; text-decoration: none; font-size: 24px; color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0); letter-spacing: 0px; text-transform: none; word-spacing: 0px;\">&nbsp;</span>1-től 25-ig!​</p>",
                             align: "center",
-                            font: ['Tahoma, Geneva, sans-serif', [24, "px"], "rgba(0,0,0,1)", "700", "none", "", "break-word", ""]
+                            font: ['raleway, sans-serif', [25, "px"], "rgba(0,139,255,1.00)", "500", "none", "", "break-word", ""],
+                            textStyle: ["", "", "", "", "none"]
                         },
                         {
                             id: 'Score',
                             type: 'text',
                             tag: 'pre',
-                            rect: ['252px', '39px', '480px', '21px', 'auto', 'auto'],
+                            rect: ['261px', '37px', '480px', '20px', 'auto', 'auto'],
                             text: "<p style=\"margin:0px\">Kattints az 1-es mezőre!​</p>",
                             align: "center",
-                            font: ['Tahoma, Geneva, sans-serif', [14, "px"], "rgba(0,0,0,1)", "400", "none", "normal", "break-word", ""]
+                            font: ['raleway, sans-serif', [15, "px"], "rgba(0,0,0,1)", "400", "none", "normal", "break-word", ""]
                         },
                         {
                             id: 'board',
@@ -114,10 +117,10 @@
                             fill: ['rgba(0,0,0,1.00)']
                         },
                         {
-                            rect: ['0px', '33px', '96px', '30px', 'auto', 'auto'],
-                            font: ['Tahoma, Geneva, sans-serif', [24, 'px'], 'rgba(255,255,255,1.00)', '400', 'none solid rgb(0, 0, 0)', 'normal', 'break-word', 'normal'],
+                            rect: ['0px', '26px', '96px', '44px', 'auto', 'auto'],
+                            font: ['raleway, sans-serif', [24, 'px'], 'rgba(255,255,255,1.00)', '400', 'none solid rgb(0, 0, 0)', 'normal', 'break-word', 'normal'],
                             id: 'number',
-                            text: '#',
+                            text: '<p style=\"margin:0px\"><span style=\"font-size: 36px;\">26</span></p>',
                             align: 'center',
                             type: 'text'
                         },
@@ -415,10 +418,10 @@
                             fill: ['rgba(255,255,255,0.99)']
                         },
                         {
-                            type: 'image',
-                            display: 'block',
                             rect: ['29px', '5px', '30px', '29px', 'auto', 'auto'],
                             id: 'image',
+                            type: 'image',
+                            display: 'block',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '-300px', '-99px', '1000px', '1000px', 'no-repeat']
                         }
                     ],
@@ -448,54 +451,54 @@
                         {
                             rect: ['0px', '0px', '450px', '300px', 'auto', 'auto'],
                             borderRadius: ['5px', '5px', '5px', '5px 5px'],
-                            fill: ['rgba(255,255,255,0.98)'],
+                            boxShadow: ['', 0, 13, 60, 0, 'rgba(0,0,0,0.65098)'],
                             id: 'bg',
                             stroke: [0, 'rgba(0,0,0,1)', 'none'],
                             type: 'rect',
-                            boxShadow: ['', 0, 13, 60, 0, 'rgba(0,0,0,0.65098)']
+                            fill: ['rgba(255,255,255,0.98)']
                         },
                         {
-                            type: 'image',
-                            display: 'none',
                             rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
                             id: 'happy',
+                            type: 'image',
+                            display: 'none',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '0px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
-                            type: 'image',
-                            display: 'none',
                             rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
                             id: 'sad',
+                            type: 'image',
+                            display: 'none',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '-100px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
-                            type: 'image',
-                            display: 'none',
                             rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
                             id: 'neutral',
+                            type: 'image',
+                            display: 'none',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '-200px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
-                            rect: ['29px', '56px', '392px', '94px', 'auto', 'auto'],
                             font: ['Tahoma, Geneva, sans-serif', [24, 'px'], 'rgba(170,170,170,1.00)', '400', 'none', 'normal', 'break-word', 'normal'],
-                            align: 'center',
+                            type: 'text',
+                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur elit. In quis nulla ac mi ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
                             id: 'text',
                             textStyle: ['', '', '30px', '', 'none'],
-                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur elit. In quis nulla ac mi ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
-                            type: 'text'
+                            align: 'center',
+                            rect: ['29px', '56px', '392px', '94px', 'auto', 'auto']
                         },
                         {
-                            type: 'rect',
+                            rect: ['0px', '39px', '450px', '1px', 'auto', 'auto'],
                             id: 'divider',
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
-                            rect: ['0px', '39px', '450px', '1px', 'auto', 'auto'],
+                            type: 'rect',
                             fill: ['rgba(225,225,225,1.00)']
                         },
                         {
-                            rect: ['423px', '12px', '14', '14', 'auto', 'auto'],
+                            type: 'rect',
                             id: 'btn_close',
                             symbolName: 'btn_close',
-                            type: 'rect'
+                            rect: ['423px', '12px', '14', '14', 'auto', 'auto']
                         }
                     ],
                     style: {
@@ -519,22 +522,22 @@
                             '24px'
                         ],
                         [
-                            "eid11",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${neutral}",
-                            'none',
-                            'none'
-                        ],
-                        [
                             "eid10",
                             "display",
                             0,
                             0,
                             "linear",
                             "${sad}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid11",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${neutral}",
                             'none',
                             'none'
                         ],
@@ -569,10 +572,10 @@
                             fill: ['rgba(255,255,255,0.99)']
                         },
                         {
-                            type: 'image',
-                            display: 'block',
                             rect: ['31px', '9px', '25px', '22px', 'auto', 'auto'],
                             id: 'neutral',
+                            type: 'image',
+                            display: 'block',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '-300px', '-50px', '1000px', '1000px', 'no-repeat']
                         }
                     ],
@@ -617,10 +620,10 @@
                             fill: ['rgba(255,255,255,0.99)']
                         },
                         {
-                            type: 'image',
-                            display: 'block',
                             rect: ['29px', '11px', '26px', '18px', 'auto', 'auto'],
                             id: 'neutral',
+                            type: 'image',
+                            display: 'block',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet.png', '-300px', '0px', '1000px', '1000px', 'no-repeat']
                         }
                     ],
@@ -665,8 +668,8 @@
                             f: null,
                             tf: null,
                             rect: ['-2px', '7px', '18px', '2px', 'auto', 'auto'],
-                            transform: [[], ['-45'], [0, 0, 0], [1, 1, 1]],
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
+                            transform: [[], ['-45'], [0, 0, 0], [1, 1, 1]],
                             fill: ['rgba(170,170,170,1.00)']
                         },
                         {
@@ -678,8 +681,8 @@
                             f: null,
                             tf: null,
                             rect: ['-2px', '7px', '18px', '2px', 'auto', 'auto'],
-                            transform: [[], ['45'], [0, 0, 0], [1, 1, 1]],
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
+                            transform: [[], ['45'], [0, 0, 0], [1, 1, 1]],
                             fill: ['rgba(170,170,170,1.00)']
                         }
                     ],
@@ -709,20 +712,20 @@
                         {
                             id: 'btn_check',
                             type: 'rect',
-                            symbolName: 'btn_check',
-                            rect: ['0px', '0px', '84', '39', 'auto', 'auto']
+                            rect: ['0px', '0px', '84', '39', 'auto', 'auto'],
+                            symbolName: 'btn_check'
                         },
                         {
                             id: 'btn_answer',
                             type: 'rect',
-                            symbolName: 'btn_answer',
-                            rect: ['188px', '0px', null, null, 'auto', 'auto']
+                            rect: ['188px', '0px', null, null, 'auto', 'auto'],
+                            symbolName: 'btn_answer'
                         },
                         {
                             id: 'btn_restart',
                             type: 'rect',
-                            symbolName: 'btn_restart',
-                            rect: ['94px', '0px', null, null, 'auto', 'auto']
+                            rect: ['94px', '0px', null, null, 'auto', 'auto'],
+                            symbolName: 'btn_restart'
                         }
                     ],
                     style: {
@@ -757,10 +760,10 @@
                             fill: ['rgba(255,255,255,0.99)']
                         },
                         {
-                            type: 'image',
-                            display: 'block',
                             rect: ['27px', '6px', '30px', '28px', 'auto', 'auto'],
                             id: 'neutral',
+                            type: 'image',
+                            display: 'block',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet3.png', '-299px', '-100px', '1000px', '1000px', 'no-repeat']
                         }
                     ],
@@ -799,54 +802,54 @@
                         {
                             rect: ['0px', '0px', '450px', '300px', 'auto', 'auto'],
                             borderRadius: ['5px', '5px', '5px', '5px 5px'],
-                            boxShadow: ['', 0, 13, 60, 0, 'rgba(0,0,0,0.65098)'],
+                            fill: ['rgba(255,255,255,0.98)'],
                             id: 'bg',
                             stroke: [0, 'rgba(0,0,0,1)', 'none'],
                             type: 'rect',
-                            fill: ['rgba(255,255,255,0.98)']
+                            boxShadow: ['', 0, 13, 60, 0, 'rgba(0,0,0,0.65098)']
                         },
                         {
-                            rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
-                            id: 'happy',
                             type: 'image',
                             display: 'none',
+                            rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
+                            id: 'happy',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet2.png', '0px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
-                            rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
-                            id: 'sad',
                             type: 'image',
                             display: 'none',
+                            rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
+                            id: 'sad',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet2.png', '-100px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
-                            rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
-                            id: 'neutral',
                             type: 'image',
                             display: 'none',
+                            rect: ['177px', '165px', '96px', '98px', 'auto', 'auto'],
+                            id: 'neutral',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet2.png', '-200px', '0px', '1000px', '1000px', 'no-repeat']
                         },
                         {
-                            type: 'text',
                             rect: ['29px', '56px', '392px', '80px', 'auto', 'auto'],
-                            textStyle: ['', '', '26px', '', 'none'],
-                            id: 'text',
-                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis nulla ac mi vehicula ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
+                            font: ['Tahoma, Geneva, sans-serif', [18, 'px'], 'rgba(170,170,170,1.00)', '400', 'none', 'normal', 'break-word', 'normal'],
                             align: 'center',
-                            font: ['Tahoma, Geneva, sans-serif', [18, 'px'], 'rgba(170,170,170,1.00)', '400', 'none', 'normal', 'break-word', 'normal']
+                            id: 'text',
+                            textStyle: ['', '', '26px', '', 'none'],
+                            text: '<p style=\"margin: 0px;\">​Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis nulla ac mi vehicula ultrices non eget lectus.<span style=\"font-size: 18px;\"></span></p>',
+                            type: 'text'
                         },
                         {
-                            rect: ['0px', '39px', '450px', '1px', 'auto', 'auto'],
+                            type: 'rect',
                             id: 'divider',
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
-                            type: 'rect',
+                            rect: ['0px', '39px', '450px', '1px', 'auto', 'auto'],
                             fill: ['rgba(176,176,176,1.00)']
                         },
                         {
                             id: 'btn_close',
                             rect: ['423px', '12px', '14', '14', 'auto', 'auto'],
-                            type: 'rect',
-                            symbolName: 'btn_close'
+                            symbolName: 'btn_close',
+                            type: 'rect'
                         }
                     ],
                     style: {
@@ -935,22 +938,22 @@
                     autoPlay: true,
                     data: [
                         [
-                            "eid15",
-                            "display",
-                            0,
-                            0,
-                            "linear",
-                            "${blind}",
-                            'none',
-                            'none'
-                        ],
-                        [
                             "eid13",
                             "display",
                             0,
                             0,
                             "linear",
                             "${modal}",
+                            'none',
+                            'none'
+                        ],
+                        [
+                            "eid15",
+                            "display",
+                            0,
+                            0,
+                            "linear",
+                            "${blind}",
                             'none',
                             'none'
                         ]
@@ -975,10 +978,10 @@
                             fill: ['rgba(255,255,255,0.99)']
                         },
                         {
-                            type: 'image',
-                            display: 'block',
                             rect: ['31px', '9px', '25px', '22px', 'auto', 'auto'],
                             id: 'neutral',
+                            type: 'image',
+                            display: 'block',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet2.png', '-300px', '-50px', '1000px', '1000px', 'no-repeat']
                         }
                     ],
@@ -1023,10 +1026,10 @@
                             fill: ['rgba(255,255,255,0.99)']
                         },
                         {
-                            type: 'image',
-                            display: 'block',
                             rect: ['29px', '11px', '26px', '18px', 'auto', 'auto'],
                             id: 'neutral',
+                            type: 'image',
+                            display: 'block',
                             fill: ['rgba(0,0,0,0)', 'images/ofi_commons_spritesheet2.png', '-300px', '0px', '1000px', '1000px', 'no-repeat']
                         }
                     ],
@@ -1063,16 +1066,16 @@
                 content: {
                     dom: [
                         {
-                            transform: [[], ['-45'], [0, 0, 0], [1, 1, 1]],
                             rect: ['-2px', '7px', '18px', '2px', 'auto', 'auto'],
+                            transform: [[], ['-45'], [0, 0, 0], [1, 1, 1]],
                             id: 'Rectangle2Copy',
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
                             type: 'rect',
                             fill: ['rgba(170,170,170,1.00)']
                         },
                         {
-                            transform: [[], ['45'], [0, 0, 0], [1, 1, 1]],
                             rect: ['-2px', '7px', '18px', '2px', 'auto', 'auto'],
+                            transform: [[], ['45'], [0, 0, 0], [1, 1, 1]],
                             id: 'Rectangle2Copy2',
                             stroke: [0, 'rgb(0, 0, 0)', 'none'],
                             type: 'rect',
